@@ -179,6 +179,10 @@ class ReaderBackend(object):
                 ret[r.reftype].append(r.ref)
             else:
                 ret[r.reftype] = [r.ref]
+        if 'url' in ret:
+            linkedinList=[i for i in ret['url'] if "linkedin" in i]
+            if len(linkedinList)>1:
+                ret['url'].remove(min(linkedinList,key=len))
         return ret
 
 
